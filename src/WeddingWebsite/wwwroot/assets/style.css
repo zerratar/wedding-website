@@ -5,6 +5,23 @@ body {
     background-color: #eaeae7;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Amatic SC', sans-serif, Arial, Tahoma, Verdana, sans-serif;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 46px;
+    font-weight: 300;
+    padding: 10px 0px;
+    margin: 0;
+}
+
 .head {
     background: url(images/header.jpg) no-repeat 100% 34%;
     background-size: cover;
@@ -52,7 +69,7 @@ body {
     position: relative;
     left: 50%;
     transform: translate(-50%, 0);
-    cursor: pointer;    
+    cursor: pointer;
 }
 
 .head .language img {
@@ -65,34 +82,36 @@ body {
     width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    display: flex;    
+    display: flex;
     flex-wrap: wrap;
 }
 
 .nav {
     background-color: #f7f7f7;
     max-width: 100%;
-    width: 230px;
-    max-height: 670px;
+    width: 230px;    
+    max-height: 696px;
 }
 
 .nav ul {
     list-style: none;
     padding: 0;
-    margin: 0;    
+    margin: 0;
 }
 
 .nav ul li {
     padding: 15px 25px;
     box-sizing: border-box;
     /* border-bottom: 1px solid transparent; */
-    user-select: none;    
+    user-select: none;
     /* margin: 8px; */
     text-transform: uppercase;
+
+    font: 300 16px/1.5 'Montserrat', sans-serif, Arial, Tahoma, Verdana, sans-serif;
 }
 
 .nav ul li:hover {
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0, 0, 0, 0.1);
     /* font-weight: 600; */
     /* border-bottom: 1px solid black; */
     cursor: pointer;
@@ -101,16 +120,41 @@ body {
 .content {
     background-color: white;
     flex-grow: 1;
-    padding: 50px;    
+    padding: 50px;
     position: relative;
     top: -120px;
     min-height: 750px;
+}
+
+.timer-row {
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    position: relative;
+    top: -70px;
+
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.timer-header {
+    font-size: 18pt;
+    padding-bottom: 25px;
 }
 
 .timer {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    position: relative;
-    top: -70px;
+}
+
+.countdown {
+    font-size: 24pt;
+    font-weight: 600;
+}
+
+.countdown.secs-left {
+    color: rgb(172, 73, 73);
 }

@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nathalie & Karl's Wedding</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:300,400,500,600" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
     <script src="assets/site.js"></script>
 </head>
@@ -34,34 +34,40 @@
                 <li onclick="linkClicked(this)" data-url="about" data-lang-en="About us" data-lang-se="Om oss"></li>
                 <li onclick="linkClicked(this)" data-url="wedding" data-lang-en="The Wedding" data-lang-se="Brölloppet"></li>
                 <li onclick="linkClicked(this)" data-url="bridal-party" data-lang-en="The Bridal Party" data-lang-se="Bröllopsfölje"></li>
-                <li onclick="linkClicked(this)" data-url="important-info" data-lang-en="Important information" data-lang-se="Viktig information"></li>
+                <li onclick="linkClicked(this)" data-url="important-info" data-lang-en="Important information"
+                    data-lang-se="Viktig information"></li>
                 <li onclick="linkClicked(this)" data-url="wish-list" data-lang-en="Wish list" data-lang-se="Önskelista"></li>
                 <li onclick="linkClicked(this)" data-url="guestbook" data-lang-en="Guest book" data-lang-se="Gästbok"></li>
                 <li onclick="linkClicked(this)" data-url="gallery" data-lang-en="Gallery" data-lang-se="Galleri"></li>
-                <li onclick="linkClicked(this)" data-url="long-distance-guests" data-lang-en="Long-distance guests" data-lang-se="Långdistansgäster"></li>
+                <li onclick="linkClicked(this)" data-url="long-distance-guests" data-lang-en="Long-distance guests"
+                    data-lang-se="Långdistansgäster"></li>
                 <li onclick="linkClicked(this)" data-url="videos" data-lang-en="Videos" data-lang-se="Videos"></li>
                 <li onclick="linkClicked(this)" data-url="rsvp" data-lang-en="R.S.V.P." data-lang-se="OSA"></li>
-                <li onclick="linkClicked(this)" data-url="contact" data-lang-en="Contact" data-lang-se="Kontakt"></li>
+                <li onclick="linkClicked(this)" data-url="contact" data-lang-en="Contact" data-lang-se="Kontakta oss"></li>
             </ul>
         </div>
         <div class="content">
         </div>
-        <div class="timer">
-            <div class="time-box">
-                <div class="countdown days-left" data-wedding-countdown="days"></div>
-                <div data-lang-en="Days" data-lang-se="Dagar"></div>
-            </div>
-            <div class="time-box">
-                <div class="countdown hours-left" data-wedding-countdown="hours"></div>
-                <div data-lang-en="Hours" data-lang-se="Timmar"></div>
-            </div>
-            <div class="time-box">
-                <div class="countdown mins-left" data-wedding-countdown="mins"></div>
-                <div data-lang-en="Minutes" data-lang-se="Minuter"></div>
-            </div>
-            <div class="time-box">
-                <div class="countdown secs-left" data-wedding-countdown="secs"></div>
-                <div data-lang-en="Seconds" data-lang-se="Sekunder"></div>
+
+        <div class="timer-row">
+            <div class="timer-header" data-lang-en="Countdown to wedding" data-lang-se="Nedräkning till brölloppet"></div>
+            <div class="timer">
+                <div class="time-box">
+                    <div class="countdown days-left" data-wedding-countdown="days"></div>
+                    <div data-lang-en="Days" data-lang-se="Dagar"></div>
+                </div>
+                <div class="time-box">
+                    <div class="countdown hours-left" data-wedding-countdown="hours"></div>
+                    <div data-lang-en="Hours" data-lang-se="Timmar"></div>
+                </div>
+                <div class="time-box">
+                    <div class="countdown mins-left" data-wedding-countdown="mins"></div>
+                    <div data-lang-en="Minutes" data-lang-se="Minuter"></div>
+                </div>
+                <div class="time-box">
+                    <div class="countdown secs-left" data-wedding-countdown="secs"></div>
+                    <div data-lang-en="Seconds" data-lang-se="Sekunder"></div>
+                </div>
             </div>
         </div>
     </div>

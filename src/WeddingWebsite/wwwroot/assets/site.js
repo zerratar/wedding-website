@@ -1,22 +1,27 @@
-let language = "en";
+const state = {
+    language: "se",
+    weddingDate: new Date("2019-08-02 16:00"),
+    view: "welcome"
+};
+
 let content = undefined;
 let countdownTimers = undefined;
 
-const weddingDay = new Date("2019-08-02 16:00");
 const loadedViews = {};
 
 function setLanguage(lang) {
-    language = lang;
-    const localizedElements = document
+    state.language = lang;
+    document
         .querySelectorAll(`[data-lang-${lang}]`)
         .forEach(elm => {
-            elm.innerHTML = lang == "en" ? elm.dataset.langEn : elm.dataset.langSe;
+            elm.innerHTML = lang == "en" ?
+                elm.dataset.langEn :
+                elm.dataset.langSe;
         });
-
 }
 
-async function linkClicked(elm) {
-    const url = elm.dataset.url;
+async function setViewAsync(url) {
+    state.view = url;
     if (!content) content = document.querySelector(".content");
     if (loadedViews[url]) {
         content.innerHTML = loadedViews[url];
@@ -24,6 +29,11 @@ async function linkClicked(elm) {
     }
     loadedViews[url] = await getRequestAsync(`views/${url}.html`);
     content.innerHTML = loadedViews[url];
+}
+
+async function linkClicked(elm) {
+    const url = elm.dataset.url;
+    setViewAsync(url);
 }
 
 async function getRequestAsync(url) {
@@ -34,7 +44,9 @@ async function getRequestAsync(url) {
 }
 
 window.addEventListener("load", () => {
-    setLanguage(language);
+    setViewAsync(state.view).then(() => {
+        setLanguage(state.language);
+    });
     draw(0);
 });
 
@@ -43,16 +55,13 @@ function draw(time) {
 
     countdownTimers.forEach(x => {
         const type = x.dataset.weddingCountdown;
-
-        const dateDiffMs =  weddingDay.getTime() - (new Date()).getTime();
-
+        const dateDiffMs = state.weddingDate.getTime() - (new Date()).getTime();
         const totalSeconds = dateDiffMs / 1000;
         const totalMinutes = totalSeconds / 60;
         const seconds = totalSeconds % 60;
-        const minutes = totalMinutes % 60;        
+        const minutes = totalMinutes % 60;
         const hours = (totalMinutes / 60) % 24;
         const days = (totalMinutes / 60 / 24);
-        
 
         switch (type) {
             case "days":
@@ -66,13 +75,11 @@ function draw(time) {
                 break;
             case "secs":
                 x.innerHTML = `${parseInt(seconds, 10)}`;
-                break;                
+                break;
         }
-        
         if (x.innerHTML.length == 1) {
             x.innerHTML = "0" + x.innerHTML;
         }
-
     });
 
     setTimeout(() => requestAnimationFrame(t => draw(t)), 1000);
