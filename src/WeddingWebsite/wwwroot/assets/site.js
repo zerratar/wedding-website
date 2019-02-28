@@ -1,7 +1,7 @@
 const state = {
-    language: "se",
+    language: "en",
     weddingDate: new Date("2019-08-02 16:00"),
-    view: "welcome"
+    view: "wedding" // welcome
 };
 
 let content = undefined;
@@ -21,14 +21,18 @@ function setLanguage(lang) {
 }
 
 async function setViewAsync(url) {
-    state.view = url;
-    if (!content) content = document.querySelector(".content");
-    if (loadedViews[url]) {
+    try {
+        state.view = url;
+        if (!content) content = document.querySelector(".content");
+        if (loadedViews[url]) {
+            content.innerHTML = loadedViews[url];
+            return;
+        }
+        loadedViews[url] = await getRequestAsync(`views/${url}.html`);
         content.innerHTML = loadedViews[url];
-        return;
+    } finally {
+        setLanguage(state.language);
     }
-    loadedViews[url] = await getRequestAsync(`views/${url}.html`);
-    content.innerHTML = loadedViews[url];
 }
 
 async function linkClicked(elm) {
@@ -44,9 +48,7 @@ async function getRequestAsync(url) {
 }
 
 window.addEventListener("load", () => {
-    setViewAsync(state.view).then(() => {
-        setLanguage(state.language);
-    });
+    setViewAsync(state.view);
     draw(0);
 });
 

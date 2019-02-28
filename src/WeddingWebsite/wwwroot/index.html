@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nathalie & Karl's Wedding</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <title>Nathalie & Karl's Wedding</title>    
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:300,400,500,600" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
@@ -28,29 +27,31 @@
         </div>
     </div>
     <div class="section">
-        <div class="nav">
-            <ul>
-                <li onclick="linkClicked(this)" data-url="welcome" data-lang-en="Welcome" data-lang-se="Välkommen"></li>
-                <li onclick="linkClicked(this)" data-url="about" data-lang-en="About us" data-lang-se="Om oss"></li>
-                <li onclick="linkClicked(this)" data-url="wedding" data-lang-en="The Wedding" data-lang-se="Brölloppet"></li>
-                <li onclick="linkClicked(this)" data-url="bridal-party" data-lang-en="The Bridal Party" data-lang-se="Bröllopsfölje"></li>
-                <li onclick="linkClicked(this)" data-url="important-info" data-lang-en="Important information"
-                    data-lang-se="Viktig information"></li>
-                <li onclick="linkClicked(this)" data-url="wish-list" data-lang-en="Wish list" data-lang-se="Önskelista"></li>
-                <li onclick="linkClicked(this)" data-url="guestbook" data-lang-en="Guest book" data-lang-se="Gästbok"></li>
-                <li onclick="linkClicked(this)" data-url="gallery" data-lang-en="Gallery" data-lang-se="Galleri"></li>
-                <li onclick="linkClicked(this)" data-url="long-distance-guests" data-lang-en="Long-distance guests"
-                    data-lang-se="Långdistansgäster"></li>
-                <li onclick="linkClicked(this)" data-url="videos" data-lang-en="Videos" data-lang-se="Videos"></li>
-                <li onclick="linkClicked(this)" data-url="rsvp" data-lang-en="R.S.V.P." data-lang-se="OSA"></li>
-                <li onclick="linkClicked(this)" data-url="contact" data-lang-en="Contact" data-lang-se="Kontakta oss"></li>
-            </ul>
+        <div class="wrapper">
+            <div class="nav">
+                <ul>
+                    <li onclick="linkClicked(this)" data-url="welcome" data-lang-en="Welcome" data-lang-se="Välkommen"></li>
+                    <li onclick="linkClicked(this)" data-url="about" data-lang-en="About us" data-lang-se="Om oss"></li>
+                    <li onclick="linkClicked(this)" data-url="wedding" data-lang-en="The Wedding" data-lang-se="Brölloppet"></li>
+                    <li onclick="linkClicked(this)" data-url="bridal-party" data-lang-en="The Bridal Party"
+                        data-lang-se="Bröllopsfölje"></li>
+                    <li onclick="linkClicked(this)" data-url="important-info" data-lang-en="Important information"
+                        data-lang-se="Viktig information"></li>
+                    <li onclick="linkClicked(this)" data-url="wish-list" data-lang-en="Wish list" data-lang-se="Önskelista"></li>
+                    <li onclick="linkClicked(this)" data-url="guestbook" data-lang-en="Guest book" data-lang-se="Gästbok"></li>
+                    <li onclick="linkClicked(this)" data-url="gallery" data-lang-en="Gallery" data-lang-se="Galleri"></li>
+                    <li onclick="linkClicked(this)" data-url="long-distance-guests" data-lang-en="Long-distance guests"
+                        data-lang-se="Långdistansgäster"></li>
+                    <li onclick="linkClicked(this)" data-url="videos" data-lang-en="Videos" data-lang-se="Videos"></li>
+                    <li onclick="linkClicked(this)" data-url="rsvp" data-lang-en="R.S.V.P." data-lang-se="OSA"></li>
+                    <li onclick="linkClicked(this)" data-url="contact" data-lang-en="Contact" data-lang-se="Kontakta oss"></li>
+                </ul>
+            </div>
+            <div class="content">
+            </div>
         </div>
-        <div class="content">
-        </div>
-
         <div class="timer-row">
-            <div class="timer-header" data-lang-en="Countdown to wedding" data-lang-se="Nedräkning till brölloppet"></div>
+            <div class="timer-header" data-lang-en="Wedding day in" data-lang-se="Brölloppet om"></div>
             <div class="timer">
                 <div class="time-box">
                     <div class="countdown days-left" data-wedding-countdown="days"></div>
