@@ -16,13 +16,54 @@
 <body class="app">
     <div class="head">
         <div class="title">
-            <div class="small">Welcome to</div>
-            <div class="big">Nathalie &amp; Karl's Wedding</div>
+            <div class="small" data-lang-en="Welcome to" data-lang-se="Välkommen till"></div>
+            <div class="big" data-lang-en="Nathalie &amp; Karl's Wedding" data-lang-se="Nathalie &amp; Karl's Bröllop"></div>
+        </div>
+        <div class="time">
+            <div class="date" data-lang-en="2 August 2019" data-lang-se="2 augusti 2019"></div>
+            <div class="language">
+                <img src="assets/images/flag_en.svg" onclick="setLanguage('en')" />
+                <img src="assets/images/flag_se.svg" onclick="setLanguage('se')" />
+            </div>
         </div>
     </div>
     <div class="section">
-        <div class="nav"></div>
-        <div class="content"></div>
+        <div class="nav">
+            <ul>
+                <li onclick="linkClicked(this)" data-url="welcome" data-lang-en="Welcome" data-lang-se="Välkommen"></li>
+                <li onclick="linkClicked(this)" data-url="about" data-lang-en="About us" data-lang-se="Om oss"></li>
+                <li onclick="linkClicked(this)" data-url="wedding" data-lang-en="The Wedding" data-lang-se="Brölloppet"></li>
+                <li onclick="linkClicked(this)" data-url="bridal-party" data-lang-en="The Bridal Party" data-lang-se="Bröllopsfölje"></li>
+                <li onclick="linkClicked(this)" data-url="important-info" data-lang-en="Important information" data-lang-se="Viktig information"></li>
+                <li onclick="linkClicked(this)" data-url="wish-list" data-lang-en="Wish list" data-lang-se="Önskelista"></li>
+                <li onclick="linkClicked(this)" data-url="guestbook" data-lang-en="Guest book" data-lang-se="Gästbok"></li>
+                <li onclick="linkClicked(this)" data-url="gallery" data-lang-en="Gallery" data-lang-se="Galleri"></li>
+                <li onclick="linkClicked(this)" data-url="long-distance-guests" data-lang-en="Long-distance guests" data-lang-se="Långdistansgäster"></li>
+                <li onclick="linkClicked(this)" data-url="videos" data-lang-en="Videos" data-lang-se="Videos"></li>
+                <li onclick="linkClicked(this)" data-url="rsvp" data-lang-en="R.S.V.P." data-lang-se="OSA"></li>
+                <li onclick="linkClicked(this)" data-url="contact" data-lang-en="Contact" data-lang-se="Kontakt"></li>
+            </ul>
+        </div>
+        <div class="content">
+        </div>
+        <div class="timer">
+            <div class="time-box">
+                <div class="countdown days-left" data-wedding-countdown="days"></div>
+                <div data-lang-en="Days" data-lang-se="Dagar"></div>
+            </div>
+            <div class="time-box">
+                <div class="countdown hours-left" data-wedding-countdown="hours"></div>
+                <div data-lang-en="Hours" data-lang-se="Timmar"></div>
+            </div>
+            <div class="time-box">
+                <div class="countdown mins-left" data-wedding-countdown="mins"></div>
+                <div data-lang-en="Minutes" data-lang-se="Minuter"></div>
+            </div>
+            <div class="time-box">
+                <div class="countdown secs-left" data-wedding-countdown="secs"></div>
+                <div data-lang-en="Seconds" data-lang-se="Sekunder"></div>
+            </div>
+        </div>
     </div>
 </body>
 
