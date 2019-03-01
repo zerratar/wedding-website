@@ -1,8 +1,12 @@
 const state = {
     language: "en",
     weddingDate: new Date("2019-08-02 16:00"),
-    view: "wedding", // welcome
+    view: "rsvp", // welcome
     address: "A O Elliots Väg 10, 413 11 Göteborg",
+    contact: { 
+        bride: { name: "Nathalie", phone: "555-000-124", email: "nathalie@worldwideweb.com" },
+        groom: { name: "Karl", phone: "555-000-123", email: "karl@worldwideweb.com" }
+    },
     formattedDate: () => {
         let months = [];
         if (state.language == "en") {
@@ -32,8 +36,6 @@ let content = undefined;
 let countdownTimers = undefined;
 
 const loadedViews = {};
-
-
 
 function setLanguage(lang) {
     state.language = lang;
@@ -89,7 +91,7 @@ function parseBinding(binding, model) {
         let propertyParse = propertyNameOrPath;
         while (propertyParse.includes(".")) {
             properties.push(propertyParse.split(".")[0]);
-            propertyParse = propertyParse.substring(propertyParse.indexOf("."));
+            propertyParse = propertyParse.substring(propertyParse.indexOf(".") + 1);
         }
         properties.push(propertyParse);
         let value = model;
