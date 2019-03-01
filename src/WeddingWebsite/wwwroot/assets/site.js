@@ -1,7 +1,31 @@
 const state = {
     language: "en",
     weddingDate: new Date("2019-08-02 16:00"),
-    view: "wedding" // welcome
+    view: "wedding", // welcome
+    address: "A O Elliots Väg 10, 413 11 Göteborg",
+    formattedDate: () => {
+        let months = [];
+        if (state.language == "en") {
+            months = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+        } else {
+            months = [
+                "januari", "februari", "mars", "april", "maj", "juni",
+                "juli", "augusti", "september", "oktober", "november", "december"
+            ];
+        }
+        const day = state.weddingDate.getDate();
+        const month = months[state.weddingDate.getMonth()];
+        const year = state.weddingDate.getFullYear();
+        return `${day} ${month}, ${year}`;
+    },
+    formattedTime: () => {        
+        const minutes = numberPad(state.weddingDate.getMinutes());
+        const hours = numberPad(state.weddingDate.getHours());
+        return `${hours}:${minutes}`;
+    }    
 };
 
 let content = undefined;
@@ -9,14 +33,19 @@ let countdownTimers = undefined;
 
 const loadedViews = {};
 
+
+
 function setLanguage(lang) {
     state.language = lang;
     document
         .querySelectorAll(`[data-lang-${lang}]`)
         .forEach(elm => {
-            elm.innerHTML = lang == "en" ?
+
+            const binding = lang == "en" ?
                 elm.dataset.langEn :
                 elm.dataset.langSe;
+
+            elm.innerHTML = parseBinding(binding, state);
         });
 }
 
@@ -47,10 +76,55 @@ async function getRequestAsync(url) {
     return response.text();
 }
 
+function parseBinding(binding, model) {
+    const regex = /{([^}]+)}/gm;
+
+    return binding.replace(regex, m => {
+        if (m.index == regex.lastIndex) {
+            ++regex.lastIndex;
+        }
+
+        const propertyNameOrPath = m.substring(1, m.length - 1);
+        const properties = [];
+        let propertyParse = propertyNameOrPath;
+        while (propertyParse.includes(".")) {
+            properties.push(propertyParse.split(".")[0]);
+            propertyParse = propertyParse.substring(propertyParse.indexOf("."));
+        }
+        properties.push(propertyParse);
+        let value = model;
+        for (let i = 0; i < properties.length; ++i) {
+            value = value[properties[i]];
+            if (isFunction(value)) {
+                value = value();
+            }
+        }
+        return value;
+    })
+}
+
+function openMenu() {
+    document.body.classList.add("nav-open")
+}
+
+function closeMenu() {
+    document.body.classList.remove("nav-open")
+}
+
+function isFunction(functionToCheck) {
+    return (
+        functionToCheck && {}.toString.call(functionToCheck) === "[object Function]"
+    );
+}
+
 window.addEventListener("load", () => {
     setViewAsync(state.view);
     draw(0);
 });
+
+function numberPad(value) {
+    return `${value}`.length == 1 ? `0${value}` : value;
+}
 
 function draw(time) {
     if (!countdownTimers) countdownTimers = document.querySelectorAll("[data-wedding-countdown]");
