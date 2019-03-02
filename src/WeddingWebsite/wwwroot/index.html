@@ -29,8 +29,13 @@
         </div>
     </div>
     <div class="section">
-        <div class="menu-button" onclick="openMenu()"><i class="fas fa-bars"></i></div>
+        <div class="nav-bar">            
+            <div class="menu-label" data-lang-en="Menu" data-lang-se="Meny"></div>
+            <div class="menu-button" onclick="openMenu()"><i class="fas fa-bars"></i></div>
+        </div>
         <div class="wrapper">
+
+            <div class="nav-tint" onclick="closeMenu()"></div>
             <div class="nav">
                 <div class="close-menu-button" onclick="closeMenu()"><i class="fas fa-times"></i></div>
                 <ul>
@@ -50,11 +55,11 @@
                     <li onclick="linkClicked(this)" data-url="videos" data-lang-en="Videos" data-lang-se="Videos"></li>
                     <li onclick="linkClicked(this)" data-url="rsvp" data-lang-en="R.S.V.P." data-lang-se="OSA"></li>
                     <li onclick="linkClicked(this)" data-url="contact" data-lang-en="Contact" data-lang-se="Kontakta oss"></li>
-                </ul>                
+                </ul>
             </div>
             <div class="content">
             </div>
-        </div>        
+        </div>
         <div class="timer-row">
             <div class="timer-header" data-lang-en="Wedding day in" data-lang-se="Brölloppet om"></div>
             <div class="timer">

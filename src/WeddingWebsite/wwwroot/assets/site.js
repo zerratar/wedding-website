@@ -1,7 +1,7 @@
 const state = {
     language: "en",
     weddingDate: new Date("2019-08-02 16:00"),
-    view: "rsvp", // welcome
+    view: "welcome", // welcome
     address: "A O Elliots Väg 10, 413 11 Göteborg",
     contact: { 
         bride: { name: "Nathalie", phone: "555-000-124", email: "nathalie@worldwideweb.com" },
@@ -68,7 +68,8 @@ async function setViewAsync(url) {
 
 async function linkClicked(elm) {
     const url = elm.dataset.url;
-    setViewAsync(url);
+    await setViewAsync(url);
+    closeMenu();
 }
 
 async function getRequestAsync(url) {
