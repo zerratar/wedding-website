@@ -2,7 +2,7 @@ const state = {
     hashtag: "wedding",
     language: "en",
     weddingDate: new Date("2019-08-02 16:00"),
-    view: "gallery", // welcome
+    view: "welcome", // welcome
     address: "A O Elliots Väg 10, 413 11 Göteborg",
     contact: {
         bride: {
