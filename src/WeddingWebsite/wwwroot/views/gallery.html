@@ -1,3 +1,33 @@
 <div class="gallery">
-    <h1 data-lang-en="Gallery" data-lang-se="Galleri"></h1>    
+    <h1 data-lang-en="Gallery" data-lang-se="Galleri"></h1>
+    <div class="instagram-feed"></div>
 </div>
+
+
+<script>
+    let instagramImages = [];
+    async function loadInstagramFeedAsync() {
+        const result = await getRequestAsync(`/api/instagram/${state.hashtag}`);
+        if (result.length > 0) {
+            const images = JSON.parse(result);
+            const feed = document.querySelector(".instagram-feed");
+            images.forEach(x => {
+                instagramImages.push(x);                
+                const img = new Image();
+                img.src = x.thumbnailUrl;
+                feed.appendChild(img);
+            })
+        }
+    }
+    loadInstagramFeedAsync();
+</script>
+
+<!-- <script type="text/javascript">
+    var feed = new Instafeed({
+        get: 'tagged',
+        tagName: 'awesome',
+        clientId: 'e3cbcb4ab7504a1fa19f846100598f67',
+        //accessToken: '1484662761.e3cbcb4.3fc2da4f153547178b57e4a52543c447'
+    });
+    feed.run();
+</script> -->

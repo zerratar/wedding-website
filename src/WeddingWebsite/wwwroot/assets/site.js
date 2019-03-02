@@ -1,7 +1,8 @@
 const state = {
+    hashtag: "wedding",
     language: "en",
     weddingDate: new Date("2019-08-02 16:00"),
-    view: "rsvp", // welcome
+    view: "gallery", // welcome
     address: "A O Elliots Väg 10, 413 11 Göteborg",
     contact: {
         bride: {
@@ -14,6 +15,11 @@ const state = {
             phone: "555-000-123",
             email: "karl@worldwideweb.com"
         }
+    },
+    contactform: {
+        name: "",
+        email: "",
+        message: ""
     },
     rsvp: {
         firstName: "",
@@ -177,6 +183,12 @@ async function setViewAsync(url) {
         }
         loadedViews[url] = await getRequestAsync(`views/${url}.html`);
         content.innerHTML = loadedViews[url];
+        content
+            .querySelectorAll("script")
+            .forEach(script => {
+                eval(script.innerHTML);
+            });
+
     } finally {
         // setLanguage(state.language);
         await applyBindingsAsync();
@@ -188,6 +200,42 @@ function validateRSVP(rsvp) {
     if (!rsvp.lastName|| rsvp.lastName.length == 0) return false;
     if (!rsvp.email || rsvp.email.length == 0) return false;
     return true;
+}
+
+function validateContact(contactform) {
+    if (!contactform.name || contactform.name.length == 0) return false;
+    if (!contactform.message|| contactform.message.length == 0) return false;
+    if (!contactform.email || contactform.email.length == 0) return false;
+    return true;
+}
+
+async function sendContact() {
+    if (!validateContact(state.contactform)) {
+        const msg = state.language == "en" 
+        ? "Please make sure you fill in all fields before submitting."
+        : "Var vänligen och fyll i alla fält innan du skickar.";
+
+        alert(msg);        
+        return ;
+    }
+
+    try {
+        await postRequestAsync("/api/contact", state.contactform);
+        
+        state.contactform.name = "";
+        state.contactform.email = "";
+        state.contactform.message = "";
+        render();
+
+        const msg = state.language == "en" 
+            ? "Thank you for contacting us!"
+            : "Tack för att du kontaktar oss!";
+
+        alert(msg);
+    }
+    catch (e) {
+        alert("Error submitting message, please try again later.");
+    }
 }
 
 async function sendRSVP() {

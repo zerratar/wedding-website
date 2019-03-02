@@ -342,16 +342,30 @@ button:focus {
     outline: none;
 }
 
-.rsvp {
+.rsvp, .contact {
     font-weight: 300;
 }
 
 .text-row {
+    font-weight: 300;
     margin: 5px 0px;
 }
 
 .spacer {
     margin-top: 20px;
+}
+
+.instagram-feed {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    justify-items: flex-start;
+    align-items: flex-start;
+}
+.instagram-feed img {
+    max-width: 180px;
+    border: 10px solid #f5f5f5;
+    margin: 5px;
 }
 
 @media screen and (max-width: 900px) {

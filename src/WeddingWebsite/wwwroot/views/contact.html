@@ -1,3 +1,39 @@
 <div class="contact">
-    <h1 data-lang-en="Contact" data-lang-se="Kontakt"></h1>
+    <h1 data-lang-en="Get in touch" data-lang-se="Kontakta oss"></h1>
+    <p data-lang-en="Don't hesitate to contact us if you have any questions. You can easily get in touch with us by phone or email."
+       data-lang-se="Tveka inte att kontakta oss om du har några frågor. Du kan väldigt smidigt komma i kontakt med oss via telefon eller e-post."></p>
+    
+    <div class="text-row" data-lang-en="Tel {contact.bride.name} - {contact.bride.phone}, <a href='mailto:{contact.bride.email}'>{contact.bride.email}</a>"
+        data-lang-se="Tel {contact.bride.name} - {contact.bride.phone}, <a href='mailto:{contact.bride.email}'>{contact.bride.email}</a>"></div>
+
+    <div class="text-row" data-lang-en="Tel {contact.groom.name} - {contact.groom.phone}, <a href='mailto:{contact.groom.email}'>{contact.groom.email}</a>"
+        data-lang-se="Tel {contact.groom.name} - {contact.groom.phone}, <a href='mailto:{contact.groom.email}'>{contact.groom.email}</a>"></div>
+
+
+        <div class="spacer"></div>
+
+        <div class="form">
+            <div class="form-content">
+                    <div class="form-row">
+                            <div class="input">
+                                    <label for="name" data-lang-en="Name" data-lang-se="Namn"></label>
+                                    <input type="text" id="name" data-bind-value="contactform.name" />
+                            </div>
+                            <div class="input">
+                                <label for="email" data-lang-en="E-mail" data-lang-se="E-post"></label>
+                                <input type="email" id="email" data-bind-value="contactform.email" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                            <div class="input-message">
+                                    <label for="message" data-lang-en="Message" data-lang-se="Meddelande"></label>
+                                    <textarea id="message" data-bind-value="contactform.message"></textarea>
+                            </div>
+                    </div>
+                    <div class="form-row">
+                            <button onclick="sendContact()" data-lang-en="Send" data-lang-se="Skicka"></button>
+                    </div>
+            </div>
+    </div>
+
 </div>

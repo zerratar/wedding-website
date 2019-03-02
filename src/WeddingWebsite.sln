@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeddingWebsite", "WeddingWe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeddingWebsite.BusinessLogic", "WeddingWebsite.BusinessLogic\WeddingWebsite.BusinessLogic.csproj", "{AAD2D859-26B7-4831-8492-3696025728EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeddingWebsite.BusinessLogic.Tests", "WeddingWebsite.BusinessLogic.Tests\WeddingWebsite.BusinessLogic.Tests.csproj", "{E33CFE26-BB48-4967-A446-ABD8E36FF5E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AAD2D859-26B7-4831-8492-3696025728EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAD2D859-26B7-4831-8492-3696025728EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAD2D859-26B7-4831-8492-3696025728EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E33CFE26-BB48-4967-A446-ABD8E36FF5E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E33CFE26-BB48-4967-A446-ABD8E36FF5E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E33CFE26-BB48-4967-A446-ABD8E36FF5E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E33CFE26-BB48-4967-A446-ABD8E36FF5E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
