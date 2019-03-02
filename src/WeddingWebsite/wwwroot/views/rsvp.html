@@ -3,13 +3,16 @@
 
         <p data-lang-en="If you have any questions you are welcome to contact us by phone or email." data-lang-se="Om du har några frågor är du vällkommen att kontakta oss via telefon eller e-post."></p>
 
+        <div class="text-row" data-lang-en="Tel {contact.bride.name} - {contact.bride.phone}, <a href='mailto:{contact.bride.email}'>{contact.bride.email}</a>"
+                data-lang-se="Tel {contact.bride.name} - {contact.bride.phone}, <a href='mailto:{contact.bride.email}'>{contact.bride.email}</a>"></div>
 
-        <p>
-                <div data-lang-en="Tel {contact.bride.name} - {contact.bride.phone}, <a href='mailto:{contact.bride.email}'>{contact.bride.email}</a>"
-                        data-lang-se=""></div>
-                <div data-lang-en="Tel {contact.groom.name} - {contact.groom.phone}, <a href='mailto:{contact.groom.email}'>{contact.groom.email}</a>"
-                        data-lang-se=""></div>
-        </p>
+        <div class="text-row" data-lang-en="Tel {contact.groom.name} - {contact.groom.phone}, <a href='mailto:{contact.groom.email}'>{contact.groom.email}</a>"
+                data-lang-se="Tel {contact.groom.name} - {contact.groom.phone}, <a href='mailto:{contact.groom.email}'>{contact.groom.email}</a>"></div>
+
+        <p data-lang-en="To make sure that all our guests will be feed properly we ask you to fill in what type of food that suits you. Several yes are possible. Add information of allergies or other things we need to know about."
+           data-lang-se="För att alla ska bli mätta och nöjda ber vi dig fylla i vilken typ av mat som passar dig. Flera ja är förstås möjliga. Komplettera med ev allergier eller annat som vi behöver veta."></p>
+
+        <div class="spacer"></div>
 
         <div class="form">
                 <div class="form-content">
@@ -37,8 +40,11 @@
                                 <div class="check">
                                         <div class="label" data-lang-en="The wedding" data-lang-se="Brölloppet"></div>
                                         <div class="choice">
-                                                <input type="radio" name="wedding" data-bind-checked="rsvp.attendance.wedding" /> <!--  data-bind-checked="rsvp.attendance.wedding" -->
-                                                <input type="radio" name="wedding" data-bind-checked="!rsvp.attendance.wedding" />
+                                                <label for="wedding_yes" data-lang-en="Yes" data-lang-se="Ja"></label>
+                                                <input type="radio" id="wedding_yes" id="wedding_yes" name="wedding"
+                                                        data-bind-checked="rsvp.attendance.wedding" />
+                                                <label for="wedding_no" data-lang-en="No" data-lang-se="Nej"></label>
+                                                <input type="radio" id="wedding_no" name="wedding" data-bind-checked="!rsvp.attendance.wedding" />
                                         </div>
                                 </div>
                         </div>
@@ -46,8 +52,10 @@
                                 <div class="check">
                                         <div class="label" data-lang-en="The after wedding cermony" data-lang-se="Bröllopsfesten"></div>
                                         <div class="choice">
-                                                <input type="radio" name="cermony" data-bind-checked="rsvp.attendance.cermony" />
-                                                <input type="radio" name="cermony" data-bind-checked="!rsvp.attendance.cermony" />
+                                                <label for="cermony_yes" data-lang-en="Yes" data-lang-se="Ja"></label>
+                                                <input type="radio" id="cermony_yes" name="cermony" data-bind-checked="rsvp.attendance.cermony" />
+                                                <label for="cermony_no" data-lang-en="No" data-lang-se="Nej"></label>
+                                                <input type="radio" id="cermony_no" name="cermony" data-bind-checked="!rsvp.attendance.cermony" />
                                         </div>
                                 </div>
                         </div>
@@ -55,8 +63,10 @@
                                 <div class="check">
                                         <div class="label" data-lang-en="I prefer to eat meat" data-lang-se="Jag föredrar att äta kött"></div>
                                         <div class="choice">
-                                                <input type="radio" name="meat" data-bind-checked="rsvp.food.meat" />
-                                                <input type="radio" name="meat" data-bind-checked="!rsvp.food.meat" />
+                                                <label for="meat_yes" data-lang-en="Yes" data-lang-se="Ja"></label>
+                                                <input type="radio" id="meat_yes" name="meat" data-bind-checked="rsvp.food.meat" />
+                                                <label for="meat_no" data-lang-en="No" data-lang-se="Nej"></label>
+                                                <input type="radio" id="meat_no" name="meat" data-bind-checked="!rsvp.food.meat" />
                                         </div>
                                 </div>
                         </div>
@@ -64,8 +74,10 @@
                                 <div class="check">
                                         <div class="label" data-lang-en="I prefer to eat fish" data-lang-se="Jag föredrar att äta fisk"></div>
                                         <div class="choice">
-                                                <input type="radio" name="fish" data-bind-checked="rsvp.food.fish" />
-                                                <input type="radio" name="fish" data-bind-checked="!rsvp.food.fish" />
+                                                <label for="fish_yes" data-lang-en="Yes" data-lang-se="Ja"></label>
+                                                <input type="radio" id="fish_yes" name="fish" data-bind-checked="rsvp.food.fish" />
+                                                <label for="fish_no" data-lang-en="No" data-lang-se="Nej"></label>
+                                                <input type="radio" id="fish_no" name="fish" data-bind-checked="!rsvp.food.fish" />
                                         </div>
                                 </div>
                         </div>
@@ -73,8 +85,12 @@
                                 <div class="check">
                                         <div class="label" data-lang-en="I prefer to eat vegetarian" data-lang-se="Jag föredrar vegetariskt"></div>
                                         <div class="choice">
-                                                <input type="radio" name="vegetarian" data-bind-checked="rsvp.food.vegetarian" />
-                                                <input type="radio" name="vegetarian" data-bind-checked="!rsvp.food.vegetarian" />
+                                                <label for="vegetarian_yes" data-lang-en="Yes" data-lang-se="Ja"></label>
+                                                <input type="radio" id="vegetarian_yes" name="vegetarian"
+                                                        data-bind-checked="rsvp.food.vegetarian" />
+                                                <label for="vegetarian_no" data-lang-en="No" data-lang-se="Nej"></label>
+                                                <input type="radio" id="vegetarian_no" name="vegetarian"
+                                                        data-bind-checked="!rsvp.food.vegetarian" />
                                         </div>
                                 </div>
                         </div>
@@ -82,8 +98,10 @@
                                 <div class="check">
                                         <div class="label" data-lang-en="I only eat vegan" data-lang-se="Jag äter endast vegan"></div>
                                         <div class="choice">
-                                                <input type="radio" name="vegan" data-bind-checked="rsvp.food.vegan"/>
-                                                <input type="radio" name="vegan" data-bind-checked="!rsvp.food.vegan"/>
+                                                <label for="vegan_yes" data-lang-en="Yes" data-lang-se="Ja"></label>
+                                                <input type="radio" id="vegan_yes" name="vegan" data-bind-checked="rsvp.food.vegan" />
+                                                <label for="vegan_no" data-lang-en="No" data-lang-se="Nej"></label>
+                                                <input type="radio" id="vegan_no" name="vegan" data-bind-checked="!rsvp.food.vegan" />
                                         </div>
                                 </div>
                         </div>

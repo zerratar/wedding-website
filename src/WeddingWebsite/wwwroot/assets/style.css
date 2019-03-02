@@ -342,6 +342,18 @@ button:focus {
     outline: none;
 }
 
+.rsvp {
+    font-weight: 300;
+}
+
+.text-row {
+    margin: 5px 0px;
+}
+
+.spacer {
+    margin-top: 20px;
+}
+
 @media screen and (max-width: 900px) {
     .nav {
         position: fixed;

@@ -16,10 +16,10 @@ const state = {
         }
     },
     rsvp: {
-        firstName: "John",
-        lastName: "Doe",
-        email: "john.doe@gmail.com",
-        phone: "555-000-111",
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
         attendance: {
             wedding: null,
             cermony: null
@@ -30,7 +30,7 @@ const state = {
             vegetarian: null,
             vegan: null
         },
-        message: "A message!"
+        message: ""
     },
     formattedDate: () => {
         let months = [];
@@ -183,9 +183,47 @@ async function setViewAsync(url) {
     }
 }
 
+function validateRSVP(rsvp) {
+    if (!rsvp.firstName || rsvp.firstName.length == 0) return false;
+    if (!rsvp.lastName|| rsvp.lastName.length == 0) return false;
+    if (!rsvp.email || rsvp.email.length == 0) return false;
+    return true;
+}
+
 async function sendRSVP() {
+    if (!validateRSVP(state.rsvp)) {
+        const msg = state.language == "en" 
+            ? "Please make sure you fill in all fields before submitting."
+            : "Var vänligen och fyll i alla fält innan du skickar.";
+
+        alert(msg);        
+        return;
+    }
     try {
-        postRequestAsync("/api/rsvp", state.rsvp);
+        await postRequestAsync("/api/rsvp", state.rsvp);
+
+        state.rsvp.firstName = "";
+        state.rsvp.lastName = "";
+        state.rsvp.email = "";
+        state.rsvp.phone = "";
+        state.rsvp.attendance = {
+            wedding: null,
+            cermony: null
+        };
+        state.rsvp.food = {
+            meat: null,
+            fish: null,
+            vegetarian: null,
+            vegan: null
+        }
+        state.rsvp.message = "";
+        render();
+
+        const msg = state.language == "en" 
+            ? "Thank you for submitting the RSVP!"
+            : "Tack för att du OSAt!";
+
+        alert(msg);
     } catch (e) {
         alert("Error submitting RSVP, please try again later.");
     }
@@ -217,6 +255,10 @@ async function postRequestAsync(url, model) {
         body: JSON.stringify(model)
     });
     return response.text();
+}
+
+function render() {
+    dataBindings.forEach(x => x.evaluateBoundValue());
 }
 
 function parseBinding(binding, model) {
