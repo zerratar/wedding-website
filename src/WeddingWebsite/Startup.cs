@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using WeddingWebsite.BusinessLogic.Providers;
+using WeddingWebsite.BusinessLogic.Repositories;
+using WeddingWebsite.BusinessLogic.Responders;
 
 namespace WeddingWebsite
 {
@@ -25,7 +28,19 @@ namespace WeddingWebsite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IRSVPRepository, FileBasedRSVPRepository>();
+            services.AddTransient<IRSVPResponder, EmailRSVPResponder>();
+            services.AddTransient<IResponderDestinationProvider, EmailResponderDestinationProvider>();
+            services.AddTransient<ISettings, DefaultSettings>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin());
+                options.AddPolicy("AllowAllMethods", builder => builder.AllowAnyMethod());
+                options.AddPolicy("AllowAllHeaders", builder => builder.AllowAnyHeader());
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +54,14 @@ namespace WeddingWebsite
             {
                 app.UseHsts();
             }
+
+
+            app.UseCors(builder =>
+                builder
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin());
+
 
             app.UseDefaultFiles();
             app.UseStaticFiles();

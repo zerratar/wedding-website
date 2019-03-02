@@ -16,29 +16,29 @@
                         <div class="form-row">
                                 <div class="input">
                                         <label for="firstname" data-lang-en="First name" data-lang-se="Förnamn"></label>
-                                        <input type="text" id="firstname" />
+                                        <input type="text" id="firstname" data-bind-value="rsvp.firstName" />
                                 </div>
                                 <div class="input">
                                         <label for="lastname" data-lang-en="Last name" data-lang-se="Efternamn"></label>
-                                        <input type="text" id="lastname" />
+                                        <input type="text" id="lastname" data-bind-value="rsvp.lastName" />
                                 </div>
                         </div>
                         <div class="form-row">
                                 <div class="input">
                                         <label for="email" data-lang-en="E-mail" data-lang-se="E-post"></label>
-                                        <input type="email" id="email" />
+                                        <input type="email" id="email" data-bind-value="rsvp.email" />
                                 </div>
                                 <div class="input">
                                         <label for="phone" data-lang-en="Phone" data-lang-se="Telefon"></label>
-                                        <input type="tel" id="phone" />
+                                        <input type="tel" id="phone" data-bind-value="rsvp.phone" />
                                 </div>
                         </div>
                         <div class="form-row">
                                 <div class="check">
                                         <div class="label" data-lang-en="The wedding" data-lang-se="Brölloppet"></div>
                                         <div class="choice">
-                                                <input type="radio" />
-                                                <input type="radio" />
+                                                <input type="radio" name="wedding" data-bind-checked="rsvp.attendance.wedding" /> <!--  data-bind-checked="rsvp.attendance.wedding" -->
+                                                <input type="radio" name="wedding" data-bind-checked="!rsvp.attendance.wedding" />
                                         </div>
                                 </div>
                         </div>
@@ -46,8 +46,8 @@
                                 <div class="check">
                                         <div class="label" data-lang-en="The after wedding cermony" data-lang-se="Bröllopsfesten"></div>
                                         <div class="choice">
-                                                <input type="radio" />
-                                                <input type="radio" />
+                                                <input type="radio" name="cermony" data-bind-checked="rsvp.attendance.cermony" />
+                                                <input type="radio" name="cermony" data-bind-checked="!rsvp.attendance.cermony" />
                                         </div>
                                 </div>
                         </div>
@@ -55,8 +55,8 @@
                                 <div class="check">
                                         <div class="label" data-lang-en="I prefer to eat meat" data-lang-se="Jag föredrar att äta kött"></div>
                                         <div class="choice">
-                                                <input type="radio" />
-                                                <input type="radio" />
+                                                <input type="radio" name="meat" data-bind-checked="rsvp.food.meat" />
+                                                <input type="radio" name="meat" data-bind-checked="!rsvp.food.meat" />
                                         </div>
                                 </div>
                         </div>
@@ -64,8 +64,8 @@
                                 <div class="check">
                                         <div class="label" data-lang-en="I prefer to eat fish" data-lang-se="Jag föredrar att äta fisk"></div>
                                         <div class="choice">
-                                                <input type="radio" />
-                                                <input type="radio" />
+                                                <input type="radio" name="fish" data-bind-checked="rsvp.food.fish" />
+                                                <input type="radio" name="fish" data-bind-checked="!rsvp.food.fish" />
                                         </div>
                                 </div>
                         </div>
@@ -73,8 +73,8 @@
                                 <div class="check">
                                         <div class="label" data-lang-en="I prefer to eat vegetarian" data-lang-se="Jag föredrar vegetariskt"></div>
                                         <div class="choice">
-                                                <input type="radio" />
-                                                <input type="radio" />
+                                                <input type="radio" name="vegetarian" data-bind-checked="rsvp.food.vegetarian" />
+                                                <input type="radio" name="vegetarian" data-bind-checked="!rsvp.food.vegetarian" />
                                         </div>
                                 </div>
                         </div>
@@ -82,16 +82,19 @@
                                 <div class="check">
                                         <div class="label" data-lang-en="I only eat vegan" data-lang-se="Jag äter endast vegan"></div>
                                         <div class="choice">
-                                                <input type="radio" />
-                                                <input type="radio" />
+                                                <input type="radio" name="vegan" data-bind-checked="rsvp.food.vegan"/>
+                                                <input type="radio" name="vegan" data-bind-checked="!rsvp.food.vegan"/>
                                         </div>
                                 </div>
                         </div>
                         <div class="form-row">
                                 <div class="input-message">
                                         <label for="message" data-lang-en="Message" data-lang-se="Meddelande"></label>
-                                        <textarea id="message"></textarea>
+                                        <textarea id="message" data-bind-value="rsvp.message"></textarea>
                                 </div>
+                        </div>
+                        <div class="form-row">
+                                <button onclick="sendRSVP()" data-lang-en="Send" data-lang-se="Skicka"></button>
                         </div>
                 </div>
         </div>

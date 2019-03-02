@@ -323,6 +323,25 @@ img.mini {
     margin-top: 8px;
 }
 
+button {
+    border: 1px solid #2980b9;
+    background-color: #3498db;
+    border-radius: 3px;
+    border-bottom: 3px solid #2980b9;
+    padding: 5px 15px;
+    color: white;
+    margin-top: 10px;
+}
+
+button:active {    
+    background-color: #2980b9;
+    outline: none;
+}
+
+button:focus {
+    outline: none;
+}
+
 @media screen and (max-width: 900px) {
     .nav {
         position: fixed;
