@@ -1,3 +1,100 @@
 <div class="guestbook">
     <h1 data-lang-en="Guest book" data-lang-se="Gästbok"></h1>
+
+        <p data-lang-en="Glad you found the Guestbook! We will be so happy if you leave a greeting."
+        data-lang-se="Glad you found the Guestbook! We will be so happy if you leave a greeting."></p>
+
+    <div class="form">
+           <div class="form-content">
+                    <div class="form-row">
+                            <div class="input">
+                                    <label for="name" data-lang-en="Name" data-lang-se="Namn"></label>
+                                    <input type="text" id="name" data-bind-value="post.name" />
+                            </div>
+                            <div class="input">
+                                <label for="email" data-lang-en="E-mail" data-lang-se="E-post"></label>
+                                <input type="email" id="email" data-bind-value="post.email" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                            <div class="input-message">
+                                    <label for="message" data-lang-en="Message" data-lang-se="Meddelande"></label>
+                                    <textarea id="message" data-bind-value="post.message"></textarea>
+                            </div>
+                    </div>
+                    <div class="form-row">
+                        <p data-lang-en="Your comment must be approved before it will be visible."
+                            data-lang-se="Your comment must be approved before it will be visible.">
+                    </p>
+                    </div>
+                    <div class="form-row">
+                        <button onclick="sendPost()" data-lang-en="Send" data-lang-se="Skicka"></button>
+                    </div>                    
+            </div>
+    </div>
+
+
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+
+
+    <div class="comments">
+        <template>
+            <div class="content-row">
+                <div class="right-col">
+                    <h3>{name}</h3>
+                    <h4>{date}</h4>
+                    <p>{message}</p>
+                </div>
+            </div>          
+        </template>
+    </div>
 </div>
+
+
+<script>
+    const loadingIndicator = document.querySelector(".lds-ring");
+    const comments = document.querySelector(".comments");
+    const template = comments.querySelector("template");
+    const templateData = template.innerHTML;
+    comments.removeChild(template);
+
+
+    function showLoadingIndicator() {
+        loadingIndicator.classList.add("visible");
+    }
+
+    function hideLoadingIndicator() {
+        loadingIndicator.classList.remove("visible");
+    }
+
+    function addPost(post) {        
+        try {
+            const element = document.createElement("div");
+            element.innerHTML = parseBinding(templateData, post);
+            comments.appendChild(element);
+        } catch(e) {
+            console.error(e);
+        }
+    }
+
+    function formatDate(post) {
+        const date = new Date(post.date);        
+        post.date = `${date.getFullYear()}-${(date.getMonth()+1)}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
+        return post;
+    }
+
+    async function loadCommentsAsync() {
+        try {
+            showLoadingIndicator();
+            const result = await getRequestAsync("/api/guestbook");
+            const data = JSON.parse(result);            
+            data.forEach(post => addPost(formatDate(post)));
+        } catch(e) {
+            alert("Whops! Something went wrong loading the guestbook. Please try again later: " + e);
+        } finally {
+            hideLoadingIndicator();
+        }
+    }
+
+    loadCommentsAsync();
+</script>

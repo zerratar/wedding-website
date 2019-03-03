@@ -23,7 +23,9 @@ namespace WeddingWebsite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IRSVPRepository, FileBasedRSVPRepository>();
+            services.AddTransient<ICommentRepository, FileBasedCommentRepository>();
             services.AddTransient<IRSVPResponder, EmailRSVPResponder>();
+            services.AddTransient<ICommentResponder, EmailCommentResponder>();
             services.AddTransient<IResponderDestinationProvider, EmailResponderDestinationProvider>();
             services.AddTransient<IRepositorySettingsProvider, JsonRepositorySettingsProvider>();
             services.AddTransient<IContactResponder, EmailContactResponder>();

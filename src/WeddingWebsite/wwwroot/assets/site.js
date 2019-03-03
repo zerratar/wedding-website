@@ -16,6 +16,11 @@ const state = {
             email: "karl@worldwideweb.com"
         }
     },
+    post: {
+        name: "",
+        email: "",
+        message: ""
+    },
     contactform: {
         name: "",
         email: "",
@@ -62,6 +67,10 @@ const state = {
         return `${hours}:${minutes}`;
     }
 };
+
+if (window.location.hash != null && window.location.hash.length > 0) {
+    state.view = window.location.hash.substring(1);
+}
 
 class DataBindingMode {
     constructor(isTwoWay) {
@@ -176,9 +185,15 @@ async function applyBindingsAsync() {
 async function setViewAsync(url) {
     try {
         state.view = url;
+        window.location.hash = `#${url}`;
         if (!content) content = document.querySelector(".content");
         if (loadedViews[url]) {
             content.innerHTML = loadedViews[url];
+            content
+                .querySelectorAll("script")
+                .forEach(script => {
+                    eval(script.innerHTML);
+                });            
             return;
         }
         loadedViews[url] = await getRequestAsync(`views/${url}.html`);
@@ -207,6 +222,35 @@ function validateContact(contactform) {
     if (!contactform.message|| contactform.message.length == 0) return false;
     if (!contactform.email || contactform.email.length == 0) return false;
     return true;
+}
+
+async function sendPost() {
+    if (!validateContact(state.post)) {
+        const msg = state.language == "en" 
+        ? "Please make sure you fill in all fields before submitting."
+        : "Var vänligen och fyll i alla fält innan du skickar.";
+
+        alert(msg);        
+        return ;
+    }
+
+    try {
+        await postRequestAsync("/api/guestbook", state.post);
+        
+        state.post.name = "";
+        state.post.email = "";
+        state.post.message = "";
+        render();
+
+        const msg = state.language == "en" 
+            ? "Thank you for posting to our guestbook!"
+            : "Tack för att du gör ett inlägg på vår gästbok!";
+
+        alert(msg);
+    }
+    catch (e) {
+        alert("Error submitting message, please try again later.");
+    }    
 }
 
 async function sendContact() {
@@ -393,7 +437,7 @@ function isFunction(functionToCheck) {
 window.addEventListener("load", () => {
     setViewAsync(state.view);
     uiTick(0);
-});
+}, false);
 
 function numberPad(value) {
     return `${value}`.length == 1 ? `0${value}` : value;

@@ -13,7 +13,6 @@
 </div>
 
 <script>
-    let instagramImages = [];
     const fullSizeImage = document.querySelector(".fullSizeImage");
     const fullSizeImageContainer = fullSizeImage.querySelector(".image-container");
     const loadingIndicator = document.querySelector(".lds-ring");
@@ -39,7 +38,7 @@
     }
 
     async function loadInstagramFeedAsync() {
-        fullSizeImage.onclick = () => hideFullSizeImage();
+        fullSizeImage.addEventListener("click", () => hideFullSizeImage(), false);
         try {
             showLoadingIndicator();
             const result = await getRequestAsync(`/api/instagram/${state.hashtag}`);
@@ -47,9 +46,8 @@
                 const images = JSON.parse(result);
                 const feed = document.querySelector(".instagram-feed");
                 images.forEach(x => {
-                    instagramImages.push(x);
                     const img = new Image();
-                    img.onclick = () => displayFullSizeImage(x.displayUrl);
+                    img.addEventListener("click", () => displayFullSizeImage(x.displayUrl), false);                    
                     img.src = x.thumbnailUrl;
                     feed.appendChild(img);
                 })
