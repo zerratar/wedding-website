@@ -1,4 +1,4 @@
-﻿namespace WeddingWebsite.BusinessLogic.Responders
+﻿namespace WeddingWebsite.BusinessLogic.Email
 {
     public class FileBasedEmailClientSettings : IEmailClientSettings
     {
