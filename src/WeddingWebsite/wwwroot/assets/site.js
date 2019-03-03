@@ -120,8 +120,8 @@ let countdownTimers = undefined;
 const dataBindings = [];
 const loadedViews = {};
 
-function setLanguage(lang) {
-    state.language = lang;
+async function setLanguage(lang) {
+    state.language = lang;    
     applyLocalization();
 }
 
