@@ -1,7 +1,9 @@
 ﻿using System;
+using WeddingWebsite.BusinessLogic.Email;
 using WeddingWebsite.BusinessLogic.Models;
+using WeddingWebsite.BusinessLogic.Responders;
 
-namespace WeddingWebsite.BusinessLogic.Responders
+namespace WeddingWebsite.BusinessLogic.Providers
 {
     public class EmailRSVPContentProvider : IEmailContentProvider
     {

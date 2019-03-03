@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using WeddingWebsite.BusinessLogic.Email;
 
 namespace WeddingWebsite.BusinessLogic.Responders
 {

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WeddingWebsite.BusinessLogic.Email;
 using WeddingWebsite.BusinessLogic.Instagram;
 using WeddingWebsite.BusinessLogic.Providers;
 using WeddingWebsite.BusinessLogic.Repositories;

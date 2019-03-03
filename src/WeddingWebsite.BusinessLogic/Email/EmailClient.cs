@@ -2,7 +2,7 @@
 using MailKit.Net.Smtp;
 using MimeKit;
 
-namespace WeddingWebsite.BusinessLogic.Responders
+namespace WeddingWebsite.BusinessLogic.Email
 {
     public class EmailClient : IEmailClient
     {
