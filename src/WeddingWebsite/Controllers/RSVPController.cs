@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WeddingWebsite.BusinessLogic.Models;
 using WeddingWebsite.BusinessLogic.Providers;
@@ -35,23 +36,20 @@ namespace WeddingWebsite.Controllers
         }
 
         [HttpPost]
-        public string Post(RSVP rsvp)
+        public async Task<string> Post(RSVP rsvp)
         {
             if (!repo.TryStore(rsvp))
             {
                 return "RSVP Failed";
             }
 
-            // send confirmation
-            var confirmationDestination = destinationProvider.Get(rsvp.Email);
-            responder.TrySend(rsvp, confirmationDestination);
-
             // notify owner
             foreach (var ownerEmail in settings.ResponseEmails)
             {
                 var ownerDestination = destinationProvider.Get(ownerEmail);
-                responder.TrySend(rsvp, ownerDestination);
+                await responder.TrySendAsync(rsvp, ownerDestination);
             }
+
             return "RSVP Submitted";
         }
     }

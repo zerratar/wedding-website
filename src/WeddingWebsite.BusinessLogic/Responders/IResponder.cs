@@ -1,7 +1,13 @@
-﻿namespace WeddingWebsite.BusinessLogic.Responders
+﻿using System.Threading.Tasks;
+
+namespace WeddingWebsite.BusinessLogic.Responders
 {
-    public interface IResponder<in TValue>
+    public interface IResponder
+    {        
+    }
+
+    public interface IResponder<in TValue> : IResponder
     {
-        bool TrySend(TValue value, IResponderDestination destination);
+        Task<bool> TrySendAsync(TValue model, IResponderDestination destination);
     }
 }

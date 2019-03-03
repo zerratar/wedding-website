@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using WeddingWebsite.BusinessLogic.Models;
 using WeddingWebsite.BusinessLogic.Providers;
 using WeddingWebsite.BusinessLogic.Responders;
@@ -24,12 +25,12 @@ namespace WeddingWebsite.Controllers
         }
 
         [HttpPost]
-        public void Post(Contact contact)
+        public async Task Post(Contact contact)
         {
             foreach (var email in settings.ResponseEmails)
             {
                 var destination = this.destinationProvider.Get(email);
-                responder.TrySend(contact, destination);
+                await responder.TrySendAsync(contact, destination);
             }
         }
     }

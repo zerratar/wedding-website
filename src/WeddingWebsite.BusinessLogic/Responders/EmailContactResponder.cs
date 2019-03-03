@@ -2,11 +2,11 @@
 
 namespace WeddingWebsite.BusinessLogic.Responders
 {
-    public class EmailContactResponder : IContactResponder
+    public class EmailContactResponder : EmailResponderBase<Contact>, IContactResponder
     {
-        public bool TrySend(Contact value, IResponderDestination destination)
+        public EmailContactResponder(IEmailClient client) 
+            : base(client, new EmailContactContentProvider())
         {
-            return false;
         }
     }
 }

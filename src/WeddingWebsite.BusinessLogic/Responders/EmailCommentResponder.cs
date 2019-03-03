@@ -2,11 +2,11 @@
 
 namespace WeddingWebsite.BusinessLogic.Responders
 {
-    public class EmailCommentResponder : ICommentResponder
+    public class EmailCommentResponder : EmailResponderBase<Comment>, ICommentResponder
     {
-        public bool TrySend(Comment value, IResponderDestination destination)
+        public EmailCommentResponder(IEmailClient client) 
+            : base(client, new EmailCommentContentProvider())
         {
-            return false;
         }
     }
 }

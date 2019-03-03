@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WeddingWebsite.BusinessLogic.Models;
 using WeddingWebsite.BusinessLogic.Providers;
@@ -31,7 +32,7 @@ namespace WeddingWebsite.Controllers
         }
 
         [HttpPost]
-        public void Post(Comment comment)
+        public async Task Post(Comment comment)
         {
             comment = new Comment(
                 comment.Name,
@@ -48,7 +49,7 @@ namespace WeddingWebsite.Controllers
             foreach (var ownerEmail in this.settings.ResponseEmails)
             {
                 var destination = destinationProvider.Get(ownerEmail);
-                responder.TrySend(comment, destination);
+                await responder.TrySendAsync(comment, destination);
             }
         }
 

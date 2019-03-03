@@ -22,6 +22,8 @@ namespace WeddingWebsite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IEmailClient, EmailClient>();
+            services.AddTransient<IEmailClientSettings, FileBasedEmailClientSettings>();
             services.AddTransient<IRSVPRepository, FileBasedRSVPRepository>();
             services.AddTransient<ICommentRepository, FileBasedCommentRepository>();
             services.AddTransient<IRSVPResponder, EmailRSVPResponder>();
