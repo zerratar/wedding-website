@@ -2,6 +2,6 @@
 {
     public class DefaultSettings : ISettings
     {
-        public string[] ResponseEmails => new string[] { "test@test.com", "banana@banana.com" };
+        public string[] ResponseEmails => new string[] { "zerratar@gmail.com" };
     }
 }

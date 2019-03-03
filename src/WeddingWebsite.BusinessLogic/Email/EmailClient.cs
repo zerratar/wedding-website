@@ -20,7 +20,7 @@ namespace WeddingWebsite.BusinessLogic.Email
             var mimeMessage = CreateMimeMessage(email);
             if (!this.service.IsConnected)
             {
-                await this.service.ConnectAsync(settings.Server);
+                await this.service.ConnectAsync(settings.Server, settings.Port);
             }
 
             if (!this.service.IsAuthenticated)

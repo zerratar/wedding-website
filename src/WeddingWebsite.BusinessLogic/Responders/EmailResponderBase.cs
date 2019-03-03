@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using WeddingWebsite.BusinessLogic.Email;
+using WeddingWebsite.BusinessLogic.Providers;
 
 namespace WeddingWebsite.BusinessLogic.Responders
 {

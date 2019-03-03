@@ -72,24 +72,11 @@ if (window.location.hash != null && window.location.hash.length > 0) {
     state.view = window.location.hash.substring(1);
 }
 
-class DataBindingMode {
-    constructor(isTwoWay) {
-        this.isTwoWay = isTwoWay;
-    }
-    static TwoWay() {
-        return new DataBindingMode(true);
-    }
-    static OneWay() {
-        return new DataBindingMode(false);
-    }
-}
-
 class DataBinding {
-    constructor(element, attribute, binding, bindingMode) {
+    constructor(element, attribute, binding) {
         this.element = element;
         this.attribute = attribute;
         this.binding = binding;
-        this.bindingMode = bindingMode;
         this.evaluator = undefined;
         this.lastValue = undefined;
     }
@@ -171,7 +158,7 @@ function parseDataBinding(elm, attributeName, binding, model) {
     if (elmDataBinding) {
         elmDataBinding.updateBinding(() => evaluatePropertyPath(binding, model));
     } else {
-        const dataBinding = new DataBinding(elm, attributeName, binding, DataBindingMode.TwoWay);
+        const dataBinding = new DataBinding(elm, attributeName, binding);
         dataBinding.updateBinding(() => evaluatePropertyPath(binding, model));
         dataBindings.push(dataBinding);
     }
